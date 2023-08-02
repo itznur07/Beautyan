@@ -14,13 +14,13 @@ const TopBar = () => {
       }}
     >
       <View>
-        <Icon name='map-marker-alt' size={24} color={"a5a5a5"} />
+        <Icon name='map-marker-alt' size={20} color={"a5a5a5"} />
       </View>
       <View>
         <Text style={{ color: "gray", fontSize: 14 }}>California, USA</Text>
       </View>
-      <View>
-        <Icon name='shopping-bag' size={24} color={"a5a5a5"} />
+      <View style={{ position: "relative" }}>
+        <Icon name='shopping-bag' size={20} color={"a5a5a5"} />
       </View>
     </View>
   );

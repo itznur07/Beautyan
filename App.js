@@ -13,12 +13,7 @@ export default function App() {
       <ScrollView>
         <View style={styles.content}>
           <TopBar />
-          <Text style={{ fontSize: 32, fontWeight: "500" }}>
-            Find Most Popular
-          </Text>
-          <Text style={{ fontSize: 24, fontWeight: "500" }}>
-            Beauty Products
-          </Text>
+          
           <Search />
           <BannerSlider />
 
