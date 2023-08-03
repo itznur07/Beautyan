@@ -8,7 +8,8 @@ import {
   View,
 } from "react-native";
 
-const LoginScreen = () => {
+const SignUpScreen = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +29,6 @@ const LoginScreen = () => {
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-          marginTop: 20,
         }}
       >
         <Image
@@ -50,6 +50,22 @@ const LoginScreen = () => {
             padding: 10,
             paddingVertical: 14,
             borderRadius: 5,
+          }}
+          placeholder='Full Name'
+          value={name}
+          onChangeText={setName}
+          keyboardType='name'
+          autoCapitalize='none'
+        />
+        <TextInput
+          style={{
+            borderWidth: 0.5,
+            borderColor: "#a7a7a7",
+            fontSize: 16,
+            padding: 10,
+            paddingVertical: 14,
+            borderRadius: 5,
+            marginTop: 10,
           }}
           placeholder='Email'
           value={email}
@@ -86,7 +102,7 @@ const LoginScreen = () => {
               borderRadius: 5,
             }}
           >
-            Login
+            Registar
           </Text>
         </TouchableOpacity>
 
@@ -154,7 +170,7 @@ const LoginScreen = () => {
             marginTop: 14,
             color: "gray",
             borderRadius: 5,
-            marginBottom: 75,
+            marginBottom: 30,
           }}
         >
           Don't have account? Sign Up
@@ -164,4 +180,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;
