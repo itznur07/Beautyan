@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Search = () => {
+
+  const [searchText, setSearchText] = useState("");
+
+  const handleChange = (text) => {
+    setSearchText(text);
+  };
+
+  
+
   return (
     <View>
       <View>
@@ -22,6 +32,8 @@ const Search = () => {
             fontSize: 16,
             position: "relative",
           }}
+          value={searchText}
+          onChangeText={handleChange}
           placeholder='Search products here'
         />
         <Icon

@@ -1,7 +1,11 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/Fontisto";
 
 const TopBar = () => {
+  const handlePress = () => {
+    navigation.navigate("LogIn");
+  };
+
   return (
     <View
       style={{
@@ -20,7 +24,9 @@ const TopBar = () => {
         <Text style={{ color: "gray", fontSize: 14 }}>California, USA</Text>
       </View>
       <View style={{ position: "relative" }}>
-        <Icon name='shopping-bag' size={20} color={"a5a5a5"} />
+        <TouchableOpacity>
+          <Icon name='shopping-bag' size={20} color={"a5a5a5"} />
+        </TouchableOpacity>
       </View>
     </View>
   );

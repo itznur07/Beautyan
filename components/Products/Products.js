@@ -2,6 +2,7 @@ import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Products = () => {
+  
   const products = [
     {
       id: 1,

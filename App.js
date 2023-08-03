@@ -1,29 +1,20 @@
+import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
-import BannerSlider from "./components/Banner/Banner";
-import FlatListComponent from "./components/FlatList/FlatList";
-import Products from "./components/Products/Products";
-import MyScrollView from "./components/ScrollView/ScrollView";
-import Search from "./components/Search/Search";
-import TopBar from "./components/TopBar/TopBar";
+import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import BottomTabNavigator from "./Navigation/BottomTabNavigator";
+import LoginScreen from "./Screen/LogInScreen/LoginScreen";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.content}>
-          <TopBar />
-          
-          <Search />
-          <BannerSlider />
-
-          <Products />
-          <Text style={{ fontSize: 24, fontWeight: "500" }}>
-            FlatList Slider
-          </Text>
-          <FlatListComponent />
-          <Text style={{ fontSize: 24, fontWeight: "500" }}>Scroll View</Text>
-          <MyScrollView />
+          <NavigationContainer>
+            <LoginScreen />
+            <View style={{ flex: 1, justifyContent: "flex-end" }}>
+              <BottomTabNavigator />
+            </View>
+          </NavigationContainer>
           <StatusBar style='auto' />
         </View>
       </ScrollView>
