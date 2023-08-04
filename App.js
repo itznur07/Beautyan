@@ -1,10 +1,70 @@
+import { AntDesign } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import AppNavigator from "./AppNavigator";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./Screen/HomeScreen/HomeScreen";
+import LoginScreen from "./Screen/LogInScreen/LoginScreen";
+import SignUpScreen from "./Screen/SignUpScreen/SignUpScreen";
+import Profile from "./Screen/UserProfile/Profile";
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function Root() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      tabBarOptions={{
+        activeTintColor: "blue",
+        inactiveTintColor: "gray",
+        showLabel: false,
+      }}
+    >
+      <Tab.Screen
+        name='Home'
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='home' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Search'
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='find' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Profile'
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='user' size={24} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      <Stack.Navigator
+        initialRouteName='Root'
+        screenOptions={{ headerShown: false, headerMode: "none" }}
+      >
+        <Stack.Screen name='Root' component={Root} />
+        <Stack.Screen name='Home' component={HomeScreen} />
+        <Stack.Screen name='Login' component={LoginScreen} />
+        <Stack.Screen name='Signup' component={SignUpScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

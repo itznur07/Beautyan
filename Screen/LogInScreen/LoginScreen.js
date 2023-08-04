@@ -1,15 +1,20 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import {
   Alert,
   Image,
+  Pressable,
   SafeAreaView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import Back from "../../components/BackButton/Back";
 
 const LoginScreen = () => {
+  const navigate = useNavigation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,25 +28,43 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: "center", backgroundColor: "#fff" }}
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        backgroundColor: "#fff",
+        position: "relative",
+      }}
     >
       <View style={{ marginHorizontal: 10 }}>
-        {/* Logo View Here */}
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 50,
-          }}
-        >
-          <Image
-            source={{
-              uri: "https://i.ibb.co/yRnn19Z/Black-Beige-Minimalist-Simple-Modern-Typography-Vanilla-Cosmetics-Logo.png",
-            }}
-            style={{ width: 200, height: 200, resizeMode: "contain" }}
-          />
+        {/* Back button */}
+        <View style={{ position: "absolute", left: 10 }}>
+          <Pressable
+            onPress={() => navigate.navigate("Root", { screen: "Home" })}
+          >
+            <Back />
+          </Pressable>
         </View>
+
+        {/* Logo View Here */}
+        <Pressable
+          onPress={() => navigate.navigate("Root", { screen: "Home" })}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 100,
+            }}
+          >
+            <Image
+              source={{
+                uri: "https://i.ibb.co/yRnn19Z/Black-Beige-Minimalist-Simple-Modern-Typography-Vanilla-Cosmetics-Logo.png",
+              }}
+              style={{ width: 200, height: 200, resizeMode: "contain" }}
+            />
+          </View>
+        </Pressable>
         {/* Logo View Ends Here */}
 
         {/* Input View Here */}
@@ -58,7 +81,7 @@ const LoginScreen = () => {
             placeholder='Email'
             value={email}
             onChangeText={setEmail}
-            keyboardType='email-address'
+            keyboardType=''
             autoCapitalize='none'
           />
           <TextInput
@@ -74,7 +97,7 @@ const LoginScreen = () => {
             placeholder='Password'
             value={password}
             onChangeText={setPassword}
-            keyboardType='password'
+            keyboardType=''
             autoCapitalize='none'
           />
           <TouchableOpacity onPress={handleLogin}>
@@ -149,7 +172,7 @@ const LoginScreen = () => {
         </View>
         {/* Social Login View Ends Here */}
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigate.navigate("Signup")}>
           <Text
             style={{
               fontSize: 16,

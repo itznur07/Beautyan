@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Fontisto";
 
 const TopBar = () => {
@@ -23,15 +23,13 @@ const TopBar = () => {
         <Text style={{ color: "gray", fontSize: 14 }}>California, USA</Text>
       </View>
       <View style={{ position: "relative" }}>
-        <TouchableOpacity>
-          <Icon
-            onPress={() => {
-              navigate.navigate("Login");
-            }}
-            name='shopping-bag'
-            size={20}
-          />
-        </TouchableOpacity>
+        <Pressable
+          onPress={() => {
+            navigate.navigate("Login");
+          }}
+        >
+          <Icon name='shopping-bag' size={20} />
+        </Pressable>
       </View>
     </View>
   );
