@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/AntDesign";
 
 const Search = () => {
-
   const [searchText, setSearchText] = useState("");
 
   const handleChange = (text) => {
     setSearchText(text);
   };
-
-  
 
   return (
     <View>
@@ -38,7 +35,7 @@ const Search = () => {
         />
         <Icon
           style={{ position: "absolute", right: 20, top: 24 }}
-          name='search'
+          name='search1'
           size={28}
           color='#a4a5a4'
         />

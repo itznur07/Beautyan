@@ -20,7 +20,9 @@ const Products = () => {
       price: 60,
       image:
         "https://images.unsplash.com/photo-1643123158509-b07b9fd5e802?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
     },
+
     {
       id: 2,
       title: "Best Sampoo for Hiar",
@@ -28,6 +30,7 @@ const Products = () => {
       price: 180,
       image:
         "https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
     },
     {
       id: 3,
@@ -36,6 +39,7 @@ const Products = () => {
       price: 199,
       image:
         "https://images.unsplash.com/photo-1601049315503-07926a49f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
     },
     {
       id: 4,
@@ -44,6 +48,25 @@ const Products = () => {
       price: 49,
       image:
         "https://images.unsplash.com/photo-1576426863848-c21f53c60b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
+    },
+    {
+      id: 5,
+      title: "Shampoo Combo Pack",
+      category: "Hair",
+      price: 85,
+      image:
+        "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
+    },
+    {
+      id: 6,
+      title: "Shampoo Combo Pack",
+      category: "Hair",
+      price: 85,
+      image:
+        "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
     },
   ];
 
@@ -76,9 +99,9 @@ const Products = () => {
       </View>
       <View
         style={{
-          flex: 1,
           flexDirection: "row",
           flexWrap: "wrap",
+          flexBasis: 2,
           justifyContent: "center",
           alignItems: "center",
           gap: 10,
@@ -108,7 +131,6 @@ const Products = () => {
                 />
                 <View
                   style={{
-                    flex: 1,
                     flexDirection: "row",
                     justifyContent: "space-between",
                     padding: 5,
