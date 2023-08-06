@@ -4,6 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./Screen/HomeScreen/HomeScreen";
 import LoginScreen from "./Screen/LogInScreen/LoginScreen";
+import ProductDetails from "./Screen/ProductDetails/ProductDetails";
+import SearchProduct from "./Screen/SearchScreen/Search";
 import SignUpScreen from "./Screen/SignUpScreen/SignUpScreen";
 import Profile from "./Screen/UserProfile/Profile";
 
@@ -33,10 +35,10 @@ function Root() {
       />
       <Tab.Screen
         name='Search'
-        component={HomeScreen}
+        component={SearchProduct}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name='find' size={24} color={color} />
+            <AntDesign name='search1' size={24} color={color} />
           ),
         }}
       />
@@ -64,6 +66,7 @@ export default function App() {
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='Signup' component={SignUpScreen} />
+        <Stack.Screen name='ProductDetails' component={ProductDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

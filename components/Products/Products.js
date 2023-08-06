@@ -1,8 +1,17 @@
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import {
+  Alert,
+  Image,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Products = () => {
-  
+  const navigate = useNavigation();
+
   const products = [
     {
       id: 1,
@@ -76,60 +85,65 @@ const Products = () => {
         }}
       >
         {products.map((item) => (
-          <View key={item.id}>
-            <View
-              style={{
-                marginTop: 10,
-                backgroundColor: "#f9f9f9",
-                borderRadius: 10,
-              }}
-            >
-              <Image
-                style={{
-                  width: 190,
-                  height: 190,
-                  resizeMode: "contain",
-                  borderRadius: 10,
-                }}
-                source={{ uri: item.image }}
-              />
+          <Pressable
+            key={item.id}
+            onPress={() => navigate.navigate("ProductDetails", item)}
+          >
+            <View>
               <View
                 style={{
-                  flex: 1,
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  padding: 5,
+                  marginTop: 10,
+                  backgroundColor: "#f9f9f9",
+                  borderRadius: 10,
                 }}
               >
-                <View>
-                  <Text style={{ fontSize: 14, fontWeight: "500" }}>
-                    {item.title.slice(0, 18)}..
-                  </Text>
-                  <Text style={{ fontSize: 16, fontWeight: "500" }}>
-                    ${item.price}
-                  </Text>
-                </View>
-                <View>
-                  <Text></Text>
-                  <TouchableOpacity onPress={() => handleAddToCart()}>
-                    <Icon
-                      style={{
-                        color: "#000",
-                        backgroundColor: "#fff",
-                        paddingHorizontal: 6,
-                        paddingVertical: 4,
-                        borderRadius: 24,
-                        shadowOpacity: 0.7,
-                        shadowColor: "#000",
-                      }}
-                      name='plus'
-                      size={20}
-                    />
-                  </TouchableOpacity>
+                <Image
+                  style={{
+                    width: 190,
+                    height: 190,
+                    resizeMode: "contain",
+                    borderRadius: 10,
+                  }}
+                  source={{ uri: item.image }}
+                />
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    padding: 5,
+                  }}
+                >
+                  <View>
+                    <Text style={{ fontSize: 14, fontWeight: "500" }}>
+                      {item.title.slice(0, 18)}..
+                    </Text>
+                    <Text style={{ fontSize: 16, fontWeight: "500" }}>
+                      ${item.price}
+                    </Text>
+                  </View>
+                  <View>
+                    <Text></Text>
+                    <TouchableOpacity onPress={() => handleAddToCart()}>
+                      <Icon
+                        style={{
+                          color: "#000",
+                          backgroundColor: "#fff",
+                          paddingHorizontal: 6,
+                          paddingVertical: 4,
+                          borderRadius: 24,
+                          shadowOpacity: 0.7,
+                          shadowColor: "#000",
+                        }}
+                        name='plus'
+                        size={20}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
+          </Pressable>
         ))}
       </View>
     </View>
