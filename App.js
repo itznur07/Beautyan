@@ -6,6 +6,7 @@ import HomeScreen from "./Screen/HomeScreen/HomeScreen";
 import LoginScreen from "./Screen/LogInScreen/LoginScreen";
 import ProductDetails from "./Screen/ProductDetails/ProductDetails";
 import SearchProduct from "./Screen/SearchScreen/Search";
+import ShoppingCart from "./Screen/ShoppingCartScreen/ShoppingCart";
 import SignUpScreen from "./Screen/SignUpScreen/SignUpScreen";
 import Profile from "./Screen/UserProfile/Profile";
 
@@ -67,6 +68,7 @@ export default function App() {
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='Signup' component={SignUpScreen} />
         <Stack.Screen name='ProductDetails' component={ProductDetails} />
+        <Stack.Screen name='ShoppingCart' component={ShoppingCart} />
       </Stack.Navigator>
     </NavigationContainer>
   );

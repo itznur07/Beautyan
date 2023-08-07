@@ -4,9 +4,13 @@ import { Image } from "expo-image";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { Alert, Pressable, SafeAreaView, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { Rating } from "react-native-ratings";
 import Icon from "react-native-vector-icons/AntDesign";
 import Back from "../../components/BackButton/Back";
+
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const ProductDetails = () => {
   const navigate = useNavigation();
@@ -30,6 +34,8 @@ const ProductDetails = () => {
             marginTop: -20,
             borderRadius: 20,
           }}
+          placeholder={blurhash}
+          transition={1000}
         />
       </View>
       {/* Product Image View Ends Here */}
@@ -94,17 +100,17 @@ const ProductDetails = () => {
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
             >
-              <Pressable onPress={() => setQuantity(quantity + 1)}>
+              <TouchableOpacity onPress={() => setQuantity(quantity + 1)}>
                 <Icon name='pluscircleo' size={28} />
-              </Pressable>
+              </TouchableOpacity>
               <Text style={{ fontSize: 20, fontWeight: "500" }}>
                 {quantity}
               </Text>
-              <Pressable
+              <TouchableOpacity
                 onPress={() => setQuantity(quantity > 0 ? quantity - 1 : 0)}
               >
                 <Icon name='minuscircleo' size={28} />
-              </Pressable>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={{ marginTop: 5 }}>
@@ -129,7 +135,9 @@ const ProductDetails = () => {
               marginTop: 30,
             }}
           >
-            <Pressable onPress={() => Alert.alert("Buying Successfully!")}>
+            <TouchableOpacity
+              onPress={() => Alert.alert("Buying Successfully!")}
+            >
               <Text
                 style={{
                   backgroundColor: "#000",
@@ -143,10 +151,12 @@ const ProductDetails = () => {
               >
                 Buy Now
               </Text>
-            </Pressable>
-            <Pressable onPress={() => Alert.alert("Product Added to cart")}>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => Alert.alert("Product Added to cart")}
+            >
               <FontAwesome5 style={{}} name='cart-plus' size={28} />
-            </Pressable>
+            </TouchableOpacity>
           </View>
         </View>
         {/* Product Information View Ends Here */}

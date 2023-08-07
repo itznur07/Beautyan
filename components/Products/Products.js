@@ -1,3 +1,4 @@
+import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import {
   Alert,
@@ -100,9 +101,7 @@ const Products = () => {
       <View
         style={{
           flexDirection: "row",
-          flexWrap: "wrap",
-          flexBasis: 2,
-          justifyContent: "center",
+
           alignItems: "center",
           gap: 10,
         }}
@@ -146,21 +145,18 @@ const Products = () => {
                   </View>
                   <View>
                     <Text></Text>
-                    <TouchableOpacity onPress={() => handleAddToCart()}>
-                      <Icon
+                    <Pressable
+                      onPress={() => navigate.navigate("ProductDetails", item)}
+                    >
+                      <AntDesign
                         style={{
-                          color: "#000",
-                          backgroundColor: "#fff",
                           paddingHorizontal: 6,
                           paddingVertical: 4,
-                          borderRadius: 24,
-                          shadowOpacity: 0.7,
-                          shadowColor: "#000",
                         }}
-                        name='plus'
-                        size={20}
+                        name='rightcircleo'
+                        size={24}
                       />
-                    </TouchableOpacity>
+                    </Pressable>
                   </View>
                 </View>
               </View>

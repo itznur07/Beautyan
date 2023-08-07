@@ -1,3 +1,4 @@
+import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Pressable, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Fontisto";
@@ -17,7 +18,7 @@ const TopBar = () => {
       }}
     >
       <View>
-        <Icon name='map-marker-alt' size={20} />
+        <Icon name='map-marker-alt' size={24} />
       </View>
       <View>
         <Text style={{ color: "gray", fontSize: 14 }}>California, USA</Text>
@@ -25,10 +26,10 @@ const TopBar = () => {
       <View style={{ position: "relative" }}>
         <Pressable
           onPress={() => {
-            navigate.navigate("Login");
+            navigate.navigate("ShoppingCart");
           }}
         >
-          <Icon name='shopping-bag' size={20} />
+          <AntDesign name='shoppingcart' size={28} />
         </Pressable>
       </View>
     </View>

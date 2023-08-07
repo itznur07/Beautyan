@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import { TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 
 const Search = () => {
@@ -11,12 +11,6 @@ const Search = () => {
 
   return (
     <View>
-      <View>
-        <Text style={{ fontSize: 32, fontWeight: "500" }}>
-          Find Most Popular
-        </Text>
-        <Text style={{ fontSize: 24, fontWeight: "500" }}>Beauty Products</Text>
-      </View>
       <View>
         <TextInput
           style={{

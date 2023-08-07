@@ -41,7 +41,8 @@ const SearchProduct = () => {
       <View style={{ flex: 1, alignItems: "center", marginTop: 100 }}>
         <Image
           source={searchImg}
-          style={{ width: 400, height: 400, resizeMode: "contain" }}
+          style={{ width: 400, height: 400 }}
+          contentFit='cover'
         />
       </View>
       <StatusBar style='auto' />

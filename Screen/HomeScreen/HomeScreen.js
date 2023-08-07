@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import BannerSlider from "../../components/Banner/Banner";
+import CategoryScrollView from "../../components/CategoryScrollView/CategoryScrollView";
 import Products from "../../components/Products/Products";
 import Search from "../../components/Search/Search";
 import TopBar from "../../components/TopBar/TopBar";
@@ -13,6 +14,7 @@ const HomeScreen = () => {
           <View>
             <TopBar />
             <Search />
+            <CategoryScrollView />
             <BannerSlider />
             <Products />
           </View>
