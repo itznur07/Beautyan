@@ -3,11 +3,21 @@ import { FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 const CategoryScrollView = () => {
-  const categoryList = ["All", "Hair", "Face", "Body", "Eye", "Makeup"];
+  const categoryList = [
+    "All",
+    "Hair",
+    "Face",
+    "Body",
+    "Eye",
+    "Makeup",
+    "Perfume",
+  ];
   const [activeCategory, setActiveCategory] = useState(categoryList[0]);
 
   const renderItem = ({ item }) => {
+
     const isActive = item === activeCategory;
+    
     return (
       <TouchableOpacity
         style={[styles.categoryItem, isActive && styles.activeCategoryItem]}

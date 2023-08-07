@@ -44,29 +44,29 @@ const Products = () => {
     },
     {
       id: 4,
-      title: "Best Sampoo for Hiar",
-      category: "Hair",
+      title: "Pink Facial Roller",
+      category: "Face",
       price: 49,
       image:
-        "https://images.unsplash.com/photo-1576426863848-c21f53c60b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.pexels.com/photos/8015783/pexels-photo-8015783.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
     },
     {
       id: 5,
-      title: "Shampoo Combo Pack",
+      title: "Hiar Oil Combo Pack",
       category: "Hair",
-      price: 85,
+      price: 55,
       image:
-        "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+        "https://images.pexels.com/photos/10427810/pexels-photo-10427810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
     },
     {
       id: 6,
-      title: "Shampoo Combo Pack",
-      category: "Hair",
+      title: "Clear Glass Perfume Bottle",
+      category: "Perfume",
       price: 85,
       image:
-        "https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+        "https://images.pexels.com/photos/258244/pexels-photo-258244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odio nam beatae tenetur adipisci eaque, voluptatem voluptates. Magnam expedita mollitia eum, iure accusamus enim nesciunt impedit aliquid at molestiae pariatur assumenda nemo sapiente corporis sed fugit optio voluptas inventore commodi.",
     },
   ];
@@ -101,12 +101,12 @@ const Products = () => {
       <View
         style={{
           flexDirection: "row",
-
-          alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: 10,
         }}
       >
-        {products.map((item) => (
+        {products.slice(0, 6).map((item) => (
           <Pressable
             key={item.id}
             onPress={() => navigate.navigate("ProductDetails", item)}
@@ -122,8 +122,7 @@ const Products = () => {
                 <Image
                   style={{
                     width: 190,
-                    height: 190,
-                    resizeMode: "contain",
+                    height: 170,
                     borderRadius: 10,
                   }}
                   source={{ uri: item.image }}
@@ -137,7 +136,7 @@ const Products = () => {
                 >
                   <View>
                     <Text style={{ fontSize: 14, fontWeight: "500" }}>
-                      {item.title.slice(0, 18)}..
+                      {item.title.slice(0, 17)}..
                     </Text>
                     <Text style={{ fontSize: 16, fontWeight: "500" }}>
                       ${item.price}
@@ -149,12 +148,9 @@ const Products = () => {
                       onPress={() => navigate.navigate("ProductDetails", item)}
                     >
                       <AntDesign
-                        style={{
-                          paddingHorizontal: 6,
-                          paddingVertical: 4,
-                        }}
+                        style={{ paddingVertical: 5 }}
                         name='rightcircleo'
-                        size={24}
+                        size={20}
                       />
                     </Pressable>
                   </View>
