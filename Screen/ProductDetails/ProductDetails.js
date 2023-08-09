@@ -13,12 +13,35 @@ const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const ProductDetails = () => {
+  
   const navigate = useNavigation();
   const route = useRoute();
-
   const [quantity, setQuantity] = useState(0);
-
   const item = route.params;
+
+  const handleAddToCart = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: item.title,
+          price: item.price,
+          desc: item.desc,
+          category: item.category,
+          image: item.image,
+        }),
+      });
+      const data = await res.json();
+
+      console.log(data);
+    } catch (error) {
+      console.log("ERROR:", error);
+    }
+  };
 
   return (
     <SafeAreaView
@@ -39,6 +62,7 @@ const ProductDetails = () => {
         />
       </View>
       {/* Product Image View Ends Here */}
+
       {/* Top View Here */}
       <View
         style={{
@@ -152,9 +176,7 @@ const ProductDetails = () => {
                 Buy Now
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => Alert.alert("Product Added to cart")}
-            >
+            <TouchableOpacity onPress={() => handleAddToCart()}>
               <FontAwesome5 style={{}} name='cart-plus' size={28} />
             </TouchableOpacity>
           </View>

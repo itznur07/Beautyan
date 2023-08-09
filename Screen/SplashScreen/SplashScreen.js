@@ -1,16 +1,18 @@
+import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { Image, Text, View } from "react-native";
 
-const SplashScreen = ({ navigation }) => {
+const SplashScreen = () => {
+  const navigate = useNavigation();
+
   useEffect(() => {
     const splashTimeout = setTimeout(() => {
-      navigation.navigate("LoginScreen");
+      navigate.navigate("Splash");
     }, 3000);
-
     return () => {
       clearTimeout(splashTimeout);
     };
-  }, [navigation]);
+  }, [navigate]);
 
   return (
     <View
