@@ -80,7 +80,11 @@ const Profile = () => {
           />
           <View style={{ marginTop: 10, right: 20 }}>
             <Text
-              style={{ textAlign: "center", fontSize: 20, fontWeight: "500" }}
+              style={{
+                textAlign: "center",
+                fontSize: 20,
+                fontWeight: "500",
+              }}
             >
               Rafsan kabir
             </Text>

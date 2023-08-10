@@ -8,12 +8,15 @@ import ProductDetails from "./Screen/ProductDetails/ProductDetails";
 import SearchProduct from "./Screen/SearchScreen/Search";
 import ShoppingCart from "./Screen/ShoppingCartScreen/ShoppingCart";
 import SignUpScreen from "./Screen/SignUpScreen/SignUpScreen";
+import NotLogged from "./Screen/UserProfile/NotLogged";
 import Profile from "./Screen/UserProfile/Profile";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Root() {
+  const isLogged = true;
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -45,7 +48,7 @@ function Root() {
       />
       <Tab.Screen
         name='Profile'
-        component={Profile}
+        component={isLogged ? NotLogged : Profile}
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign name='user' size={24} color={color} />

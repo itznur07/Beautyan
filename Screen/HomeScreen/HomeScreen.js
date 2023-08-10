@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import BannerSlider from "../../components/Banner/Banner";
 import CategoryScrollView from "../../components/CategoryScrollView/CategoryScrollView";
 import Products from "../../components/Products/Products";
@@ -8,16 +9,14 @@ import TopBar from "../../components/TopBar/TopBar";
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={{ flex: 1, marginTop: 20, paddingVertical: 10 }}>
+    <SafeAreaView style={{ paddingVertical: 10 }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ marginHorizontal: 10 }}>
-          <View>
-            <TopBar />
-            <Search />
-            <CategoryScrollView />
-            <BannerSlider />
-            <Products />
-          </View>
+          <TopBar />
+          <Search />
+          <CategoryScrollView />
+          <BannerSlider />
+          <Products />
         </View>
         <StatusBar style='auto' />
       </ScrollView>
@@ -26,11 +25,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 24,
-    paddingVertical: 10,
-  },
-});
