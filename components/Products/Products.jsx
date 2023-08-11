@@ -11,7 +11,6 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Products = () => {
-
   const navigate = useNavigation();
   const products = [
     {
@@ -121,9 +120,10 @@ const Products = () => {
               >
                 <Image
                   style={{
-                    width: 180,
-                    height: 170,
+                    width: 190,
+                    height: 190,
                     borderRadius: 10,
+                    resizeMode: "contain",
                   }}
                   source={{ uri: item.image }}
                 />

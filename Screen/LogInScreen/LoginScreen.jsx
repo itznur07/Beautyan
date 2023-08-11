@@ -4,17 +4,17 @@ import {
   Alert,
   Image,
   Pressable,
-  SafeAreaView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../components/BackButton/Back";
 
-const SignUpScreen = () => {
+const LoginScreen = () => {
   const navigate = useNavigation();
-  const [name, setName] = useState("");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,7 +29,6 @@ const SignUpScreen = () => {
   return (
     <SafeAreaView
       style={{
-        flex: 1,
         justifyContent: "center",
         backgroundColor: "#fff",
         position: "relative",
@@ -44,6 +43,7 @@ const SignUpScreen = () => {
             <Back />
           </Pressable>
         </View>
+
         {/* Logo View Here */}
         <Pressable
           onPress={() => navigate.navigate("Root", { screen: "Home" })}
@@ -77,22 +77,6 @@ const SignUpScreen = () => {
               paddingVertical: 14,
               borderRadius: 5,
             }}
-            placeholder='Full Name'
-            value={name}
-            onChangeText={setName}
-            keyboardType=''
-            autoCapitalize='none'
-          />
-          <TextInput
-            style={{
-              borderWidth: 0.5,
-              borderColor: "#a7a7a7",
-              fontSize: 16,
-              padding: 10,
-              paddingVertical: 14,
-              borderRadius: 5,
-              marginTop: 10,
-            }}
             placeholder='Email'
             value={email}
             onChangeText={setEmail}
@@ -112,7 +96,7 @@ const SignUpScreen = () => {
             placeholder='Password'
             value={password}
             onChangeText={setPassword}
-            keyboardType='  '
+            keyboardType=''
             autoCapitalize='none'
           />
           <TouchableOpacity onPress={handleLogin}>
@@ -128,7 +112,7 @@ const SignUpScreen = () => {
                 borderRadius: 5,
               }}
             >
-              Registar
+              Login
             </Text>
           </TouchableOpacity>
 
@@ -187,7 +171,7 @@ const SignUpScreen = () => {
         </View>
         {/* Social Login View Ends Here */}
 
-        <TouchableOpacity onPress={() => navigate.navigate("Login")}>
+        <TouchableOpacity onPress={() => navigate.navigate("Signup")}>
           <Text
             style={{
               fontSize: 16,
@@ -196,10 +180,10 @@ const SignUpScreen = () => {
               marginTop: 14,
               color: "gray",
               borderRadius: 5,
-              marginBottom: 30,
+              marginBottom: 75,
             }}
           >
-            already have account? Login
+            Don't have account? Sign Up
           </Text>
         </TouchableOpacity>
       </View>
@@ -207,4 +191,4 @@ const SignUpScreen = () => {
   );
 };
 
-export default SignUpScreen;
+export default LoginScreen;

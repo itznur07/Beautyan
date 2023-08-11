@@ -2,14 +2,14 @@ import { AntDesign } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import HomeScreen from "./Screen/HomeScreen/HomeScreen";
-import LoginScreen from "./Screen/LogInScreen/LoginScreen";
-import ProductDetails from "./Screen/ProductDetails/ProductDetails";
-import SearchProduct from "./Screen/SearchScreen/Search";
-import ShoppingCart from "./Screen/ShoppingCartScreen/ShoppingCart";
-import SignUpScreen from "./Screen/SignUpScreen/SignUpScreen";
-import NotLogged from "./Screen/UserProfile/NotLogged";
-import Profile from "./Screen/UserProfile/Profile";
+import HomeScreen from "../Screen/HomeScreen/HomeScreen";
+import LoginScreen from "../Screen/LogInScreen/LoginScreen";
+import ProductDetails from "../Screen/ProductDetails/ProductDetails";
+import SearchProduct from "../Screen/SearchScreen/Search";
+import ShoppingCart from "../Screen/ShoppingCartScreen/ShoppingCart";
+import SignUpScreen from "../Screen/SignUpScreen/SignUpScreen";
+import NotLogged from "../Screen/UserProfile/NotLogged";
+import Profile from "../Screen/UserProfile/Profile";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,7 +59,7 @@ function Root() {
   );
 }
 
-export default function App() {
+const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -75,4 +75,6 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+export default MainNavigation;
