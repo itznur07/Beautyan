@@ -1,11 +1,28 @@
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { Alert, Pressable, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const CartItem = ({ title, price, category, image }) => {
+const CartItem = ({ _id, title, price, category, image }) => {
   const [quantity, setQuantity] = useState(0);
+
+  /** DELETE ACTION */
+  const handleDeletePress = (_id) => {
+    fetch(`https://beautyan-server.vercel.app/carts/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": " application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+      
+        if (data._id === _id) {
+          Alert.alert("Deleted Successfully!", "Item Deleted Successfully!");
+        }
+      });
+  };
 
   return (
     <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -33,9 +50,24 @@ const CartItem = ({ title, price, category, image }) => {
           </View>
         </View>
       </View>
-      <View style={{ flexDirection: "column", alignItems: "center", gap: 10 }}>
-        <EvilIcons color={"red"} name='trash' size={34} />
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 5,
+          marginHorizontal: 4,
+        }}
+      >
+        <Pressable onPress={() => handleDeletePress(_id)}>
+          <EvilIcons color={"red"} name='trash' size={34} />
+        </Pressable>
+        <View
+          style={{
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 5,
+          }}
+        >
           <TouchableOpacity onPress={() => setQuantity(quantity + 1)}>
             <AntDesign name='pluscircleo' size={20} />
           </TouchableOpacity>

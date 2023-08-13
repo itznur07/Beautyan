@@ -13,7 +13,6 @@ const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const ProductDetails = () => {
-  
   const navigate = useNavigation();
   const route = useRoute();
   const [quantity, setQuantity] = useState(0);
@@ -21,7 +20,7 @@ const ProductDetails = () => {
 
   const handleAddToCart = async () => {
     try {
-      const res = await fetch("http://localhost:5000/carts", {
+      const res = await fetch("https://beautyan-server.vercel.app/carts", {
         method: "POST",
         headers: {
           Accept: "application/json",
