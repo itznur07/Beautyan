@@ -1,4 +1,4 @@
-import { EvilIcons, FontAwesome5 } from "@expo/vector-icons";
+import { Entypo, EvilIcons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Image } from "expo-image";
 import { StatusBar } from "expo-status-bar";
@@ -35,8 +35,9 @@ const ProductDetails = () => {
         }),
       });
       const data = await res.json();
-
-      console.log(data);
+      if (data.success === true) {
+        Alert.alert("Successfully Added", "Item Add to cart successfully!");
+      }
     } catch (error) {
       console.log("ERROR:", error);
     }
@@ -158,9 +159,7 @@ const ProductDetails = () => {
               marginTop: 30,
             }}
           >
-            <TouchableOpacity
-              onPress={() => Alert.alert("Buying Successfully!")}
-            >
+            <TouchableOpacity onPress={() => handleAddToCart()}>
               <Text
                 style={{
                   backgroundColor: "#000",
@@ -172,11 +171,11 @@ const ProductDetails = () => {
                   fontWeight: "500",
                 }}
               >
-                Buy Now
+                Add To Cart
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => handleAddToCart()}>
-              <FontAwesome5 style={{}} name='cart-plus' size={28} />
+            <TouchableOpacity onPress={() => navigate.navigate("ShoppingCart")}>
+              <Entypo name='shopping-cart' size={34} />
             </TouchableOpacity>
           </View>
         </View>

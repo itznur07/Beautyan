@@ -17,7 +17,6 @@ const CartItem = ({ _id, title, price, category, image }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-      
         if (data._id === _id) {
           Alert.alert("Deleted Successfully!", "Item Deleted Successfully!");
         }

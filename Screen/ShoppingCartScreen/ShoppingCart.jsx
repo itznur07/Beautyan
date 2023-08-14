@@ -10,17 +10,24 @@ import CartItem from "./CartItem/CartItem";
 const ShoppingCart = () => {
   const navigate = useNavigation();
   const [carts, setCarts] = useState();
+  const [id, setId] = useState();
+
+  function idNeed(id) {
+    setId(id);
+  }
 
   /** API Calling for data */
   useEffect(() => {
     fetch("https://beautyan-server.vercel.app/carts")
       .then((res) => res.json())
-      .then((data) => setCarts(data));
+      .then((data) => {
+        setCarts(data);
+      });
   }, []);
 
   const renderItem = ({ item }) => (
     <View style={{ marginVertical: 10 }}>
-      <CartItem {...item} />
+      <CartItem {...item} idNeed={idNeed} />
     </View>
   );
 
