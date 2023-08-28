@@ -10,10 +10,12 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import logo from "../../assets/logo.png";
 import Back from "../../components/BackButton/Back";
 
-const SignUpScreen = () => {
+const LoginScreen = () => {
   const navigate = useNavigation();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,45 +31,42 @@ const SignUpScreen = () => {
   return (
     <SafeAreaView
       style={{
-        flex: 1,
         justifyContent: "center",
         backgroundColor: "#fff",
         position: "relative",
       }}
     >
-      <View style={{ marginHorizontal: 10 }}>
+      <View style={{ marginHorizontal: 20 }}>
         {/* Back button */}
-        <View style={{ position: "absolute", left: 10 }}>
+        <View style={{ position: "absolute", top: 10 }}>
           <Pressable
             onPress={() => navigate.navigate("Root", { screen: "Home" })}
           >
             <Back />
           </Pressable>
         </View>
+
         {/* Logo View Here */}
         <Pressable
           onPress={() => navigate.navigate("Root", { screen: "Home" })}
         >
           <View
             style={{
-              flex: 1,
               justifyContent: "center",
               alignItems: "center",
               marginTop: 100,
             }}
           >
             <Image
-              source={{
-                uri: "https://i.ibb.co/yRnn19Z/Black-Beige-Minimalist-Simple-Modern-Typography-Vanilla-Cosmetics-Logo.png",
-              }}
-              style={{ width: 200, height: 200, resizeMode: "contain" }}
+              source={logo}
+              style={{ width: 100, height: 100, resizeMode: "contain" }}
             />
           </View>
         </Pressable>
         {/* Logo View Ends Here */}
 
         {/* Input View Here */}
-        <View style={{ marginTop: 100 }}>
+        <View style={{ marginTop: 40 }}>
           <TextInput
             style={{
               borderWidth: 0.5,
@@ -77,12 +76,13 @@ const SignUpScreen = () => {
               paddingVertical: 14,
               borderRadius: 5,
             }}
-            placeholder='Full Name'
+            placeholder='Name'
             value={name}
             onChangeText={setName}
             keyboardType=''
             autoCapitalize='none'
           />
+
           <TextInput
             style={{
               borderWidth: 0.5,
@@ -90,8 +90,8 @@ const SignUpScreen = () => {
               fontSize: 16,
               padding: 10,
               paddingVertical: 14,
-              borderRadius: 5,
               marginTop: 10,
+              borderRadius: 5,
             }}
             placeholder='Email'
             value={email}
@@ -99,6 +99,7 @@ const SignUpScreen = () => {
             keyboardType=''
             autoCapitalize='none'
           />
+
           <TextInput
             style={{
               borderWidth: 0.5,
@@ -112,7 +113,7 @@ const SignUpScreen = () => {
             placeholder='Password'
             value={password}
             onChangeText={setPassword}
-            keyboardType='  '
+            keyboardType=''
             autoCapitalize='none'
           />
           <TouchableOpacity onPress={handleLogin}>
@@ -121,29 +122,14 @@ const SignUpScreen = () => {
                 fontSize: 16,
                 fontWeight: "500",
                 padding: 14,
-                backgroundColor: "dodgerblue",
+                backgroundColor: "#000",
                 textAlign: "center",
                 color: "white",
                 marginTop: 14,
                 borderRadius: 5,
               }}
             >
-              Registar
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={handleLogin}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: "500",
-                textAlign: "center",
-                marginTop: 14,
-                color: "gray",
-                borderRadius: 5,
-              }}
-            >
-              forget password?
+              Login
             </Text>
           </TouchableOpacity>
         </View>
@@ -157,9 +143,9 @@ const SignUpScreen = () => {
                 fontSize: 16,
                 fontWeight: "500",
                 padding: 14,
-                backgroundColor: "#f8f8f8",
+                backgroundColor: "#5CAFFF",
                 textAlign: "center",
-                color: "blue",
+                color: "white",
                 marginTop: 14,
                 borderRadius: 5,
               }}
@@ -174,9 +160,9 @@ const SignUpScreen = () => {
                 fontSize: 16,
                 fontWeight: "500",
                 padding: 14,
-                backgroundColor: "#f8f8f8",
+                backgroundColor: "#FF6464",
                 textAlign: "center",
-                color: "red",
+                color: "white",
                 marginTop: 14,
                 borderRadius: 5,
               }}
@@ -196,10 +182,10 @@ const SignUpScreen = () => {
               marginTop: 14,
               color: "gray",
               borderRadius: 5,
-              marginBottom: 30,
+              marginBottom: 75,
             }}
           >
-            already have account? Login
+            Already have account? Sign In
           </Text>
         </TouchableOpacity>
       </View>
@@ -207,4 +193,4 @@ const SignUpScreen = () => {
   );
 };
 
-export default SignUpScreen;
+export default LoginScreen;

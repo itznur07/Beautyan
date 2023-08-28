@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import logo from "../../assets/logo.png";
 import Back from "../../components/BackButton/Back";
 
 const LoginScreen = () => {
@@ -31,12 +32,13 @@ const LoginScreen = () => {
       style={{
         justifyContent: "center",
         backgroundColor: "#fff",
+        height: "100%",
         position: "relative",
       }}
     >
-      <View style={{ marginHorizontal: 10 }}>
+      <View style={{ marginHorizontal: 20 }}>
         {/* Back button */}
-        <View style={{ position: "absolute", left: 10 }}>
+        <View style={{ position: "absolute", top: 10 }}>
           <Pressable
             onPress={() => navigate.navigate("Root", { screen: "Home" })}
           >
@@ -50,24 +52,21 @@ const LoginScreen = () => {
         >
           <View
             style={{
-              flex: 1,
               justifyContent: "center",
               alignItems: "center",
               marginTop: 100,
             }}
           >
             <Image
-              source={{
-                uri: "https://i.ibb.co/yRnn19Z/Black-Beige-Minimalist-Simple-Modern-Typography-Vanilla-Cosmetics-Logo.png",
-              }}
-              style={{ width: 200, height: 200, resizeMode: "contain" }}
+              source={logo}
+              style={{ width: 100, height: 100, resizeMode: "contain" }}
             />
           </View>
         </Pressable>
         {/* Logo View Ends Here */}
 
         {/* Input View Here */}
-        <View style={{ marginTop: 100 }}>
+        <View style={{ marginTop: 50 }}>
           <TextInput
             style={{
               borderWidth: 0.5,
@@ -105,7 +104,7 @@ const LoginScreen = () => {
                 fontSize: 16,
                 fontWeight: "500",
                 padding: 14,
-                backgroundColor: "dodgerblue",
+                backgroundColor: "#000",
                 textAlign: "center",
                 color: "white",
                 marginTop: 14,
@@ -141,9 +140,9 @@ const LoginScreen = () => {
                 fontSize: 16,
                 fontWeight: "500",
                 padding: 14,
-                backgroundColor: "#f8f8f8",
+                backgroundColor: "#5CAFFF",
                 textAlign: "center",
-                color: "blue",
+                color: "white",
                 marginTop: 14,
                 borderRadius: 5,
               }}
@@ -158,9 +157,9 @@ const LoginScreen = () => {
                 fontSize: 16,
                 fontWeight: "500",
                 padding: 14,
-                backgroundColor: "#f8f8f8",
+                backgroundColor: "#FF6464",
                 textAlign: "center",
-                color: "red",
+                color: "white",
                 marginTop: 14,
                 borderRadius: 5,
               }}
