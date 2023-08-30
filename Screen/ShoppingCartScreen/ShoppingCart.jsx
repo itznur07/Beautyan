@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,16 +9,13 @@ import CartItem from "./CartItem/CartItem";
 
 const ShoppingCart = () => {
   const navigate = useNavigation();
-  const [id, setId] = useState();
   const { data: carts, isLoading, isError } = useGetCartsQuery();
 
-  function idNeed(id) {
-    setId(id);
-  }
+  const subTotal = carts.reduce((prevData, item) => prevData + item.price, 0);
 
   const renderItem = ({ item }) => (
     <View style={{ marginVertical: 10 }}>
-      <CartItem {...item} idNeed={idNeed} />
+      <CartItem {...item} />
     </View>
   );
 
@@ -73,10 +69,12 @@ const ShoppingCart = () => {
             </Text>
           </View>
           <View>
-            <Text style={{ textAlign: "center" }}>$430.00</Text>
+            <Text style={{ textAlign: "center" }}>${subTotal}.00</Text>
             <Text style={{ textAlign: "center" }}>$50.00</Text>
             <View style={{ borderWidth: 0.5, marginVertical: 2 }}></View>
-            <Text style={{ fontSize: 16, fontWeight: "bold" }}>$480.00</Text>
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+              ${subTotal + 50}.00
+            </Text>
           </View>
         </View>
         <TouchableOpacity>
