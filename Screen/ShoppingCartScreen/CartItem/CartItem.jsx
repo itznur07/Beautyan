@@ -1,26 +1,20 @@
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { useState } from "react";
-import { Alert, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useDeleteCartMutation } from "../../../redux/features/carts/cartsApi";
 
 const CartItem = ({ _id, title, price, category, image }) => {
   const [quantity, setQuantity] = useState(0);
 
+  const [deleteCart, { isLoading, isError, isSuccess }] =
+    useDeleteCartMutation();
+
   /** DELETE ACTION */
-  const handleDeletePress = (_id) => {
-    fetch(`https://beautyan-server.vercel.app/carts/${_id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": " application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data._id === _id) {
-          Alert.alert("Deleted Successfully!", "Item Deleted Successfully!");
-        }
-      });
+  const handleDeletePress = () => {
+    
+    deleteCart(_id);
   };
 
   return (
@@ -57,7 +51,7 @@ const CartItem = ({ _id, title, price, category, image }) => {
           marginHorizontal: 4,
         }}
       >
-        <Pressable onPress={() => handleDeletePress(_id)}>
+        <Pressable onPress={handleDeletePress}>
           <EvilIcons color={"red"} name='trash' size={34} />
         </Pressable>
         <View

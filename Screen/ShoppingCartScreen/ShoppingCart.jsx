@@ -1,29 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Back from "../../components/BackButton/Back";
+import { useGetCartsQuery } from "../../redux/features/carts/cartsApi";
 import CartItem from "./CartItem/CartItem";
 
 const ShoppingCart = () => {
   const navigate = useNavigation();
-  const [carts, setCarts] = useState();
   const [id, setId] = useState();
+  const { data: carts, isLoading, isError } = useGetCartsQuery();
 
   function idNeed(id) {
     setId(id);
   }
-
-  /** API Calling for data */
-  useEffect(() => {
-    fetch("https://beautyan-server.vercel.app/carts")
-      .then((res) => res.json())
-      .then((data) => {
-        setCarts(data);
-      });
-  }, []);
 
   const renderItem = ({ item }) => (
     <View style={{ marginVertical: 10 }}>

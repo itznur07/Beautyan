@@ -8,6 +8,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Rating } from "react-native-ratings";
 import Icon from "react-native-vector-icons/AntDesign";
 import Back from "../../components/BackButton/Back";
+import { useAddCartsMutation } from "../../redux/features/carts/cartsApi";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -18,29 +19,10 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(0);
   const item = route.params;
 
-  const handleAddToCart = async () => {
-    try {
-      const res = await fetch("https://beautyan-server.vercel.app/carts", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: item.title,
-          price: item.price,
-          desc: item.desc,
-          category: item.category,
-          image: item.image,
-        }),
-      });
-      const data = await res.json();
-      if (data.success === true) {
-        Alert.alert("Successfully Added", "Item Add to cart successfully!");
-      }
-    } catch (error) {
-      console.log("ERROR:", error);
-    }
+  const [addCarts, { isLoading, isError, isSuccess }] = useAddCartsMutation();
+
+  const handleAddToCart = () => {
+    addCarts(item);
   };
 
   return (
