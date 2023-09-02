@@ -9,6 +9,7 @@ import { Rating } from "react-native-ratings";
 import Icon from "react-native-vector-icons/AntDesign";
 import Back from "../../components/BackButton/Back";
 import { useAddCartsMutation } from "../../redux/features/carts/cartsApi";
+import { useGetProductQuery } from "../../redux/features/products/productsApi";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -18,11 +19,19 @@ const ProductDetails = () => {
   const route = useRoute();
   const [quantity, setQuantity] = useState(0);
   const item = route.params;
+  const { _id } = item;
 
-  const [addCarts, { isLoading, isError, isSuccess }] = useAddCartsMutation();
+  /** <!-- RTK_Query HOOK --> */
+  const {
+    data: product,
+    isLoading: productIsLoading,
+    isError,
+  } = useGetProductQuery(_id);
+
+  const [addCarts, { isLoading, error, isSuccess }] = useAddCartsMutation();
 
   const handleAddToCart = () => {
-    addCarts(item);
+    addCarts(product);
   };
 
   return (
@@ -32,7 +41,7 @@ const ProductDetails = () => {
       {/* Product Image View Here */}
       <View>
         <Image
-          source={{ uri: item.image }}
+          source={{ uri: product?.image }}
           style={{
             width: 415,
             height: 430,
@@ -75,10 +84,10 @@ const ProductDetails = () => {
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
             <Text style={{ fontSize: 20, fontWeight: "500" }}>
-              {item.title.slice(0, 20)}
+              {product?.title.slice(0, 20)}
             </Text>
             <Text style={{ fontSize: 20, fontWeight: "500" }}>
-              ${item.price}.00
+              ${product?.price}.00
             </Text>
           </View>
           <View
@@ -121,7 +130,7 @@ const ProductDetails = () => {
           </View>
           <View style={{ marginTop: 5 }}>
             <Text style={{ fontSize: 16, fontWeight: "500" }}>Description</Text>
-            <Text style={{ fontSize: 14, marginTop: 3 }}>{item.desc}</Text>
+            <Text style={{ fontSize: 14, marginTop: 3 }}>{product?.desc}</Text>
           </View>
           <View
             style={{
@@ -153,7 +162,8 @@ const ProductDetails = () => {
                   fontWeight: "500",
                 }}
               >
-                Add To Cart
+                {!isSuccess && !isLoading && "Add to Cart"}{" "}
+                {isLoading && "applying"} {isSuccess && "Item added"}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigate.navigate("ShoppingCart")}>
@@ -163,6 +173,7 @@ const ProductDetails = () => {
         </View>
         {/* Product Information View Ends Here */}
       </View>
+
       <StatusBar style='auto' />
     </SafeAreaView>
   );

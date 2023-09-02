@@ -5,6 +5,6 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://beautyan-server.vercel.app/",
   }),
-  tagTypes: ["Products", "Carts", "Cart"],
+  tagTypes: ["Products", "Product", "Carts", "Cart"],
   endpoints: (builder) => ({}),
 });
