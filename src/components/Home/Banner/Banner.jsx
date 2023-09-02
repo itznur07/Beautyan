@@ -1,5 +1,7 @@
-import { Dimensions, FlatList, Image, StyleSheet, View } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { Image } from "expo-image";
+import { View } from "react-native";
+import Swiper from "react-native-swiper";
+
 
 const BannerSlider = () => {
   const data = [
@@ -20,65 +22,24 @@ const BannerSlider = () => {
     },
   ];
 
-  const renderItem = ({ item }) => (
-    <View style={styles.image}>
-      <Image
-        source={{ uri: item.imageUrl }}
-        style={{ flex: 1, borderRadius: 10, marginHorizontal: 5 }}
-        resizeMode='cover'
-      />
-    </View>
-  );
-
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-      />
-      {/* Slider indicator */}
-      <View style={styles.sliderIndicator}>
-        {data.map((item, index) => (
-          <Icon
-            key={item.id}
-            name={index === 0 ? "circle" : "circle-thin"}
-            size={10}
-            color={index === 0 ? "white" : "#fff"}
-            style={styles.indicatorIcon}
-          />
+    <View>
+      <Swiper
+        containerStyle={{ width: "100%", height: 260, borderRadius: 10 }}
+        showsButtons={false}
+        autoplay={true}
+      >
+        {data.map((slide) => (
+          <View key={slide.id}>
+            <Image
+              source={{ uri: slide.imageUrl }}
+              style={{ width: "100%", height: 250, borderRadius: 10 }}
+            />
+          </View>
         ))}
-      </View>
+      </Swiper>
     </View>
   );
 };
 
 export default BannerSlider;
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: 230,
-    position: "relative",
-  },
-  image: {
-    width: Dimensions.get("window").width,
-    height: 230,
-    borderRadius: 10,
-  },
-  sliderIndicator: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    bottom: 10,
-    left: 0,
-    right: 0,
-  },
-  indicatorIcon: {
-    margin: 5,
-  },
-});
