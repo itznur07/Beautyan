@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { useProductsQuery } from "../../redux/features/products/productsApi";
+import { useProductsQuery } from "../../../redux/features/products/productsApi";
 
 const Products = () => {
   const navigate = useNavigation();
