@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
+import { useDispatch } from "react-redux";
+import { changeKey } from "../../../redux/features/filters/filterSlice";
 
 const Search = () => {
+  const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    dispatch(changeKey(searchText));
+  }, [searchText]);
 
   const handleChange = (text) => {
     setSearchText(text);

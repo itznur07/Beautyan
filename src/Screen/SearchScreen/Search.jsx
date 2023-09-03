@@ -7,7 +7,7 @@ import searchImg from "../../assets/images/search-illus.svg";
 
 const SearchProduct = () => {
   const [searchText, setSearchText] = useState("");
-
+  console.log(searchText);
   const handleChange = (text) => {
     setSearchText(text);
   };
@@ -45,6 +45,7 @@ const SearchProduct = () => {
           contentFit='cover'
         />
       </View>
+
       <StatusBar style='auto' />
     </SafeAreaView>
   );

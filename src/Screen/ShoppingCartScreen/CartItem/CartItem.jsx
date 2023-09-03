@@ -13,7 +13,6 @@ const CartItem = ({ _id, title, price, category, image }) => {
 
   /** DELETE ACTION */
   const handleDeletePress = () => {
-    
     deleteCart(_id);
   };
 
@@ -23,7 +22,6 @@ const CartItem = ({ _id, title, price, category, image }) => {
         <View style={{ flex: 1, marginRight: 20 }}>
           <Image
             source={image}
-            contentFit='cover'
             style={{
               width: 80,
               height: 80,

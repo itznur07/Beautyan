@@ -1,23 +1,24 @@
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import {
-  Alert,
-  Image,
-  Pressable,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Pressable, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { useSelector } from "react-redux";
 import { useProductsQuery } from "../../../redux/features/products/productsApi";
 
 const Products = () => {
   const navigate = useNavigation();
-
+  const { searchKey, status } = useSelector((state) => state.filters);
   const { data: products, isLoading, isError } = useProductsQuery();
 
-  const handleAddToCart = () => {
-    Alert.alert("Added", "Product added successfully!");
+  const searchProduct = (product) =>
+    product?.title?.toLowerCase()?.includes(searchKey);
+
+  const searchCategory = (product) => {
+    if (status === "all") {
+      return product.category;
+    } else {
+      product?.category?.includes(status);
+    }
   };
 
   return (
@@ -51,60 +52,66 @@ const Products = () => {
           gap: 10,
         }}
       >
-        {products?.slice(0, 6).map((item) => (
-          <Pressable
-            key={item.id}
-            onPress={() => navigate.navigate("ProductDetails", item)}
-          >
-            <View>
-              <View
-                style={{
-                  marginTop: 10,
-                  backgroundColor: "#f9f9f9",
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  style={{
-                    width: 190,
-                    height: 190,
-                    borderRadius: 10,
-                    resizeMode: "contain",
-                  }}
-                  source={{ uri: item.image }}
-                />
+        {products
+          ?.slice(0, 6)
+          ?.filter(searchCategory)
+          ?.filter(searchProduct)
+          ?.map((item) => (
+            <Pressable
+              key={item.id}
+              onPress={() => navigate.navigate("ProductDetails", item)}
+            >
+              <View>
                 <View
                   style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    padding: 5,
+                    marginTop: 10,
+                    backgroundColor: "#f9f9f9",
+                    borderRadius: 10,
                   }}
                 >
-                  <View>
-                    <Text style={{ fontSize: 14, fontWeight: "500" }}>
-                      {item.title.slice(0, 17)}..
-                    </Text>
-                    <Text style={{ fontSize: 16, fontWeight: "500" }}>
-                      ${item.price}
-                    </Text>
-                  </View>
-                  <View>
-                    <Text></Text>
-                    <Pressable
-                      onPress={() => navigate.navigate("ProductDetails", item)}
-                    >
-                      <AntDesign
-                        style={{ paddingVertical: 5 }}
-                        name='rightcircleo'
-                        size={20}
-                      />
-                    </Pressable>
+                  <Image
+                    style={{
+                      width: 190,
+                      height: 190,
+                      borderRadius: 10,
+                      resizeMode: "contain",
+                    }}
+                    source={{ uri: item.image }}
+                  />
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      padding: 5,
+                    }}
+                  >
+                    <View>
+                      <Text style={{ fontSize: 14, fontWeight: "500" }}>
+                        {item.title.slice(0, 17)}..
+                      </Text>
+                      <Text style={{ fontSize: 16, fontWeight: "500" }}>
+                        ${item.price}
+                      </Text>
+                    </View>
+                    <View>
+                      <Text></Text>
+                      <Pressable
+                        onPress={() =>
+                          navigate.navigate("ProductDetails", item)
+                        }
+                      >
+                        <AntDesign
+                          style={{ paddingVertical: 5 }}
+                          name='rightcircleo'
+                          size={20}
+                        />
+                      </Pressable>
+                    </View>
                   </View>
                 </View>
               </View>
-            </View>
-          </Pressable>
-        ))}
+            </Pressable>
+          ))}
       </View>
     </View>
   );

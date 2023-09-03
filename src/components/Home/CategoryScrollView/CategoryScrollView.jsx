@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { useDispatch } from "react-redux";
+import { changeStatus } from "../../../redux/features/filters/filterSlice";
 
 const CategoryScrollView = () => {
   const categoryList = [
@@ -12,12 +14,17 @@ const CategoryScrollView = () => {
     "Makeup",
     "Perfume",
   ];
+
   const [activeCategory, setActiveCategory] = useState(categoryList[0]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeStatus(activeCategory.toLowerCase()));
+  }, [activeCategory]);
 
   const renderItem = ({ item }) => {
-
     const isActive = item === activeCategory;
-    
+
     return (
       <TouchableOpacity
         style={[styles.categoryItem, isActive && styles.activeCategoryItem]}

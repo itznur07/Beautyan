@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { Alert, Pressable, SafeAreaView, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Rating } from "react-native-ratings";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 import Icon from "react-native-vector-icons/AntDesign";
 import Back from "../../components/BackButton/Back";
 import { useAddCartsMutation } from "../../redux/features/carts/cartsApi";
@@ -33,6 +34,14 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     addCarts(product);
   };
+
+  if (isSuccess) {
+    Toast.show({
+      type: "success",
+      text1: "added",
+      text2: "item added to cart 👋",
+    });
+  }
 
   return (
     <SafeAreaView
@@ -162,8 +171,7 @@ const ProductDetails = () => {
                   fontWeight: "500",
                 }}
               >
-                {!isSuccess && !isLoading && "Add to Cart"}{" "}
-                {isLoading && "applying"} {isSuccess && "Item added"}
+                Add to Cart
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigate.navigate("ShoppingCart")}>
