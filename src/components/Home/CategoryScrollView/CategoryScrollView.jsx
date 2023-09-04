@@ -11,8 +11,9 @@ const CategoryScrollView = () => {
     "Face",
     "Body",
     "Eye",
-    "Makeup",
+    "Beauty",
     "Perfume",
+    "Bag",
   ];
 
   const [activeCategory, setActiveCategory] = useState(categoryList[0]);

@@ -3,6 +3,7 @@ import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BannerSlider from "../../components/Home/Banner/Banner";
 import CategoryScrollView from "../../components/Home/CategoryScrollView/CategoryScrollView";
+import NewProducts from "../../components/Home/NewProducts/NewProducts";
 import Products from "../../components/Home/Products/Products";
 import Search from "../../components/Home/Search/Search";
 import TopBar from "../../components/Home/TopBar/TopBar";
@@ -19,6 +20,7 @@ const HomeScreen = () => {
           <CategoryScrollView />
           <BannerSlider />
           <Products />
+          <NewProducts />
         </View>
         <StatusBar style='auto' />
       </ScrollView>
