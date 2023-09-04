@@ -19,7 +19,7 @@ const CategoryScrollView = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(changeStatus(activeCategory.toLowerCase()));
+    dispatch(changeStatus(activeCategory));
   }, [activeCategory]);
 
   const renderItem = ({ item }) => {

@@ -2,7 +2,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
   searchKey: "",
-  status: "all",
+  status: "All",
 };
 
 const filterSlice = createSlice({
@@ -13,7 +13,7 @@ const filterSlice = createSlice({
       state.searchKey = action.payload?.toLowerCase() || "";
     },
     changeStatus: (state, action) => {
-      state.status = action.payload?.toLowerCase() || "";
+      state.status = action.payload || "";
     },
   },
 });

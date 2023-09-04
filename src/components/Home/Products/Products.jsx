@@ -10,14 +10,16 @@ const Products = () => {
   const { searchKey, status } = useSelector((state) => state.filters);
   const { data: products, isLoading, isError } = useProductsQuery();
 
+
   const searchProduct = (product) =>
     product?.title?.toLowerCase()?.includes(searchKey);
 
   const searchCategory = (product) => {
-    if (status === "all") {
+    if (status === "All") {
       return product.category;
-    } else {
-      product?.category?.includes(status);
+    }
+    if (status !== "All") {
+      return product?.category?.includes(status);
     }
   };
 
