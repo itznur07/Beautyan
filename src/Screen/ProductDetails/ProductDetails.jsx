@@ -187,4 +187,7 @@ const ProductDetails = () => {
   );
 };
 
+// Stylesheet
+
+
 export default ProductDetails;
