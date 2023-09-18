@@ -62,7 +62,6 @@ const ProductDetails = () => {
         />
       </View>
       {/* Product Image View Ends Here */}
-
       {/* Top View Here */}
       <View
         style={{
@@ -181,7 +180,6 @@ const ProductDetails = () => {
         </View>
         {/* Product Information View Ends Here */}
       </View>
-
       <StatusBar style='auto' />
     </SafeAreaView>
   );
