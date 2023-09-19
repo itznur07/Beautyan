@@ -50,7 +50,6 @@ const ShoppingCart = () => {
           keyExtractor={(item) => item.id}
         />
       </View>
-      {/* Cart Item View Ends */}
       {/** Checkout view end here */}
       {carts?.length > 0 ? (
         <View style={{ flex: 2, marginHorizontal: 10, marginTop: 20 }}>
