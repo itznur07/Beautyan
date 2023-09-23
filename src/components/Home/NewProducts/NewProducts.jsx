@@ -7,14 +7,13 @@ import { useProductsQuery } from "../../../redux/features/products/productsApi";
 const NewProducts = () => {
   const { data, isLoading, isError } = useProductsQuery();
   const navigate = useNavigation();
-  const products = [...data];
 
   return (
     <View>
       <Text style={{ fontSize: 24, fontWeight: "500" }}>New Arrival</Text>
       <View>
         <FlatList
-          data={products.reverse().slice(0, 5)}
+          data={data}
           horizontal
           scrollEnabled
           contentContainerStyle={{ gap: 15 }}

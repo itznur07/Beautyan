@@ -29,30 +29,40 @@ function Root() {
       }}
     >
       <Tab.Screen
-        name='Home'
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <AntDesign name='home' size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
         name='Search'
         component={SearchProduct}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name='search1' size={24} color={color} />
+            <AntDesign name='search1' size={28} color={color} />
           ),
+          tabBarActiveTintColor: "dodgerblue",
+          tabBarShowLabel: true,
+          tabBarLabelStyle: { fontSize: 14 },
         }}
       />
+      <Tab.Screen
+        name='Home'
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='home' size={28} color={color} />
+          ),
+          tabBarActiveTintColor: "dodgerblue",
+          tabBarShowLabel: true,
+          tabBarLabelStyle: { fontSize: 14 },
+        }}
+      />
+
       <Tab.Screen
         name='Profile'
         component={isLogged ? NotLogged : Profile}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name='user' size={24} color={color} />
+            <AntDesign name='user' size={28} color={color} />
           ),
+          tabBarActiveTintColor: "dodgerblue",
+          tabBarShowLabel: true,
+          tabBarLabelStyle: { fontSize: 14 },
         }}
       />
     </Tab.Navigator>

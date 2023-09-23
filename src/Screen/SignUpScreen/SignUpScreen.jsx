@@ -129,7 +129,7 @@ const LoginScreen = () => {
                 borderRadius: 5,
               }}
             >
-              Login
+              Registration
             </Text>
           </TouchableOpacity>
         </View>
@@ -137,30 +137,13 @@ const LoginScreen = () => {
 
         {/* Social Login View  Here */}
         <View style={{ marginTop: 20 }}>
-          <TouchableOpacity onPress={handleLogin}>
+          <TouchableOpacity >
             <Text
               style={{
                 fontSize: 16,
                 fontWeight: "500",
                 padding: 14,
                 backgroundColor: "#5CAFFF",
-                textAlign: "center",
-                color: "white",
-                marginTop: 14,
-                borderRadius: 5,
-              }}
-            >
-              Sign in on Facebook
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={handleLogin}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: "500",
-                padding: 14,
-                backgroundColor: "#FF6464",
                 textAlign: "center",
                 color: "white",
                 marginTop: 14,
