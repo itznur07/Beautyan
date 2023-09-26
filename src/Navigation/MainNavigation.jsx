@@ -2,6 +2,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import CustomOrder from "../Screen/CustomOrder/CustomOrder";
 import HomeScreen from "../Screen/HomeScreen/HomeScreen";
 import LoginScreen from "../Screen/LogInScreen/LoginScreen";
 import ProductDetails from "../Screen/ProductDetails/ProductDetails";
@@ -52,13 +53,24 @@ function Root() {
           tabBarLabelStyle: { fontSize: 14 },
         }}
       />
-
       <Tab.Screen
         name='Profile'
         component={isLogged ? NotLogged : Profile}
         options={{
           tabBarIcon: ({ color }) => (
             <AntDesign name='user' size={28} color={color} />
+          ),
+          tabBarActiveTintColor: "dodgerblue",
+          tabBarShowLabel: true,
+          tabBarLabelStyle: { fontSize: 14 },
+        }}
+      />
+      <Tab.Screen
+        name='Custom Order'
+        component={CustomOrder}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='plus' size={28} color={color} />
           ),
           tabBarActiveTintColor: "dodgerblue",
           tabBarShowLabel: true,
