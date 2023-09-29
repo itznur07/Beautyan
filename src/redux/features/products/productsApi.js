@@ -13,7 +13,7 @@ export const productsApi = apiSlice.injectEndpoints({
         { type: "Product", id: arg },
       ],
     }),
-    /** endpoint for get single product */
+    /** endpoint for get single products */
     getProduct: builder.query({
       query: (id) => ({
         url: `products/${id}`,
