@@ -22,7 +22,7 @@ const CustomOrder = () => {
         type: [DocumentPicker.types.allFiles],
       });
 
-      // The selected file details are in the 'result' object
+      
       console.log(
         result.uri,
         result.type, // mime type
